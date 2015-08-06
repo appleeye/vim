@@ -47,12 +47,8 @@ set ruler           " 在编辑过程中，在右下角显示光标位置的状�
 "--------------------------------------------------------------------------------
 " set completeopt=longest,menu    " 关掉智能补全时的预览窗口"
 "
-"
-"
 set nocompatible
 filetype off
-"call pathogen#infect()
-"all pathogen#helptags()
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()
@@ -62,10 +58,16 @@ Bundle 'gmarik/vundle.vim'
 Bundle 'Python-mode-klen'
 Bundle 'tpope/vim-fugitive'
 Bundle 'scrooloose/nerdtree'
-
-
+Bundle 'Raimondi/delimitMate'
+Bundle 'Valloric/YouCompleteMe'
+"add snippets
+Bundle 'honza/vim-snippets'
+"add surround
+Bundle 'tpope/vim-surround'
+". can repeat last command
+Bundle 'tpope/vim-repeat'
+" TODO and FIXME
 Bundle 'vim-scripts/TaskList.vim'
-Bundle 'msanders/snipmate.vim'
 Bundle 'majutsushi/tagbar' 
 call vundle#end()
 filetype plugin indent on       " 加了这句才可以用智能补全
