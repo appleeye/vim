@@ -8,8 +8,7 @@ echo "5: prod controller"
 echo "6: uat score-job"
 echo "7: poc-api"
 echo "8: BeiJing local"
-echo "9:Azure API Dev"
-echo "10:My own Azure: the password is the same as Apple ID"
+echo "9: ETL Server"
 read  input
 case $input in
 1)  ssh -i   ~/.ssh/liuxiao                 xiaoliu@ec2-54-91-162-79.compute-1.amazonaws.com;; 
@@ -19,8 +18,8 @@ case $input in
 5)  ssh -i   ~/.ssh/liuxiao                 xiaoliu@54.89.191.150;;
 6)  ssh -i   ~/.ssh/liuxiao                 xiaoliu@uat.everstring.com;;
 7)  ssh -i   ~/.ssh/liuxiao                 xiaoliu@54.89.207.30;;
-8)  ssh -i      ~/.ssh/liuxiao                 xiaoliu@192.168.0.10 ;; 
-9)  ssh -i   ~/data/keys/Azure.key          es@esdev-api.cloudapp.net;;
+8)  ssh -i   ~/.ssh/liuxiao                 xiaoliu@192.168.0.10 ;; 
+9)  ssh -i   ~/.ssh/liuxiao                  xiaoliu@107.22.190.189;
 10) ssh      azureuser@appleeye.chinacloudapp.cn;;
 esac
 
