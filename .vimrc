@@ -63,6 +63,7 @@ Bundle 'Raimondi/delimitMate'
 Bundle 'Valloric/YouCompleteMe'
 "add snippets
 Bundle 'honza/vim-snippets'
+Bundle 'SirVer/ultisnips'
 "add surround
 Bundle 'tpope/vim-surround'
 ". can repeat last command
