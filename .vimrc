@@ -67,6 +67,8 @@ Bundle 'SirVer/ultisnips'
 "add surround
 Bundle 'tpope/vim-surround'
 ". can repeat last command
+
+Bundle 'easymotion/vim-easymotion' 
 Bundle 'tpope/vim-repeat'
 " TODO and FIXME
 Bundle 'vim-scripts/TaskList.vim'
