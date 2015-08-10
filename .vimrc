@@ -58,7 +58,6 @@ call vundle#begin()
 Bundle 'gmarik/vundle.vim'
 Bundle 'Python-mode-klen'
 Bundle 'tpope/vim-fugitive'
-Bundle 'scrooloose/nerdtree'
 Bundle 'Raimondi/delimitMate'
 Bundle 'Valloric/YouCompleteMe'
 "add snippets
@@ -67,17 +66,22 @@ Bundle 'SirVer/ultisnips'
 "add surround
 Bundle 'tpope/vim-surround'
 ". can repeat last command
-
-Bundle 'easymotion/vim-easymotion' 
 Bundle 'tpope/vim-repeat'
-" TODO and FIXME
+Bundle 'easymotion/vim-easymotion' 
+Bundle 'terryma/vim-expand-region'
+" add ide function
+Bundle 'scrooloose/nerdtree'
 Bundle 'vim-scripts/TaskList.vim'
 Bundle 'majutsushi/tagbar' 
 call vundle#end()
 filetype plugin indent on       " 加了这句才可以用智能补全
 
+let mapleader = "\<Space>"
 
 
+"vim-expand-region setting
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
 
 " python mode setting
 map <Leader>g:call RopeGotoDefinition()<CR>     
@@ -88,10 +92,20 @@ let g:pymode_breakpoint = 0
 let g:pymode_syntax = 1                                                            
 let g:pymode_syntax_builtin_objs = 0                                               
 let g:pymode_syntax_builtin_funcs = 0                                              
-"map <Leader>b Oimport ipdb; ipdb.set_trace()#BREAKPOINT <C-c>
+map <Leader>b Oimport ipdb; ipdb.set_trace()#BREAKPOINT <C-c>
 
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-let g:pydiction_location='~/.vim/tools/pydiction/complete-dict'  
+
+
+"Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<c-e>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+"autocmd FileType python set omnifunc=pythoncomplete#Complete
+"let g:pydiction_location='~/.vim/tools/pydiction/complete-dict'  
 "set tags=/home/nfs/microwindows/src/tags
 syn on              " 打开语法高亮
 set showmatch       " 设置匹配模式，类似当输入一个左括号时会匹配相应的那个右括号
