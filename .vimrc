@@ -73,6 +73,8 @@ Bundle 'terryma/vim-expand-region'
 Bundle 'scrooloose/nerdtree'
 Bundle 'vim-scripts/TaskList.vim'
 Bundle 'majutsushi/tagbar' 
+Bundle 'yegappan/grep'
+
 call vundle#end()
 filetype plugin indent on       " 加了这句才可以用智能补全
 
