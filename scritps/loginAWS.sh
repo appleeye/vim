@@ -19,7 +19,7 @@ case $input in
 6)  ssh -i   ~/.ssh/liuxiao                 xiaoliu@uat.everstring.com;;
 7)  ssh -i   ~/.ssh/liuxiao                 xiaoliu@54.89.207.30;;
 8)  ssh -i   ~/.ssh/liuxiao                 xiaoliu@192.168.0.10 ;; 
-9)  ssh -i   ~/.ssh/liuxiao                  xiaoliu@107.22.190.189;
+9)  ssh -i   ~/.ssh/liuxiao                 xiaoliu@107.22.190.189;;
 10) ssh      azureuser@appleeye.chinacloudapp.cn;;
 esac
 
