@@ -76,6 +76,8 @@ Bundle 'vim-scripts/TaskList.vim'
 Bundle 'majutsushi/tagbar' 
 Bundle 'yegappan/grep'
 Bundle 'thinca/vim-quickrun'
+Bundle 'terryma/vim-multiple-cursors'
+Bundle 'kien/ctrlp.vim'
 
 
 call vundle#end()
@@ -225,7 +227,7 @@ func SetFileTitle()
            call setline(6, "#\ @File Name: ".expand("%"))
            call setline(7, "#\ @Description:")  
            call setline(8, "#")   
-           call setline(9, "#================================================================*/")
+           call setline(9, "# ================================================================*/")
            call setline(10,"#")  
     endif            
 
