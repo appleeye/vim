@@ -21,6 +21,7 @@
  set scrolloff=5
  set cursorline
  syntax on
+ "set background=dark
 "--------------------------------------------------------------------------------
 " 查找/替换相关的设置
 "--------------------------------------------------------------------------------
@@ -78,6 +79,7 @@ Bundle 'yegappan/grep'
 Bundle 'thinca/vim-quickrun'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'kien/ctrlp.vim'
+Bundle 'altercation/vim-colors-solarized.git'
 
 
 call vundle#end()
@@ -183,9 +185,11 @@ nnoremap <silent> <F3> :Rgrep<CR>
 
 "--------------------------------------------------------------------------------
 "NERD_TREE
-"--------------------------------------------------------------------------------
+"--------------------------------------------------------------------------------"
+
 map <F7> :NERDTreeToggle<CR>
 nmap <F8> :TagbarToggle<CR>
+nmap <F4> :set number!<CR>
 
 "--------------------------------------------------------------------------------
 " NERD_commenter
@@ -207,7 +211,7 @@ autocmd BufNewFile *.py,*.cc,*.sh,*.java exec ":call SetFileTitle()"
 func SetFileTitle()  
      if expand("%:e") == 'sh'
             call setline(1, "#!/bin/sh")   
-            call setline(2, "#/*===============================================================")  
+            call setline(2, "#/ *===============================================================")  
             call setline(3, "#\ @Author: liuxiao")  
             call setline(4, "#\ @Created Time : ".strftime("%c"))  
             call setline(5, "#")   
@@ -220,7 +224,7 @@ func SetFileTitle()
 
     if expand("%:e") == 'py'                                                                                                                                                                  
            call setline(1, "#!/usr/bin/env python")
-           call setline(2, " #-*- coding:utf-8 -*- ")
+           call setline(2, "# -*- coding:utf-8 -*- ")
            call setline(3, "#\ @Author: liuxiao")  
            call setline(4, "#\ @Created Time : ".strftime("%c"))
            call setline(5, "#")   
