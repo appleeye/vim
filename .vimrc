@@ -80,7 +80,8 @@ Bundle 'thinca/vim-quickrun'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'kien/ctrlp.vim'
 Bundle 'altercation/vim-colors-solarized.git'
-
+" add tmux support
+Bundle 'christoomey/vim-tmux-navigator'
 
 call vundle#end()
 filetype plugin indent on       " 加了这句才可以用智能补全
