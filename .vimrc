@@ -61,6 +61,8 @@ Bundle 'Python-mode-klen'
 Bundle 'tpope/vim-fugitive'
 Bundle 'Raimondi/delimitMate'
 Bundle 'Valloric/YouCompleteMe'
+Bundle 'rizzatti/dash.vim'
+
 "add snippets
 Bundle 'honza/vim-snippets'
 Bundle 'SirVer/ultisnips'
@@ -80,6 +82,7 @@ Bundle 'thinca/vim-quickrun'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'kien/ctrlp.vim'
 Bundle 'altercation/vim-colors-solarized.git'
+Bundle 'vim-scripts/vim-auto-save'
 " add tmux support
 Bundle 'christoomey/vim-tmux-navigator'
 
@@ -191,6 +194,13 @@ nnoremap <silent> <F3> :Rgrep<CR>
 map <F7> :NERDTreeToggle<CR>
 nmap <F8> :TagbarToggle<CR>
 nmap <F4> :set number!<CR>
+
+"--------------------------------------------------------------------------------
+"AUTO_SAVE
+"--------------------------------------------------------------------------------"
+let g:auto_save = 1  " enable AutoSave on Vim startup
+let g:auto_save_no_updatetime = 1  " do not change the 'updatetime' option
+let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
 
 "--------------------------------------------------------------------------------
 " NERD_commenter
