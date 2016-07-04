@@ -11,7 +11,7 @@
  "set vbt_vb=        " vim进行编辑时，如果命令错误，会发出一个响声，该设置去掉响声
  "set wrap           " 自动换行
  "set nowrap         " 不自动换行
- set linebreak       " 整词换行
+ se linebreak       " 整词换行
  set whichwrap=b,s,<,>,[,]       " 光标从行首和行末时可以跳到另一行去
  "set list                       " 显示制表符
  "set listchars = tab:>-,trail:- " 将制表符显示为'>---',将行尾空格显示为'-'
@@ -21,6 +21,7 @@
  set scrolloff=5
  set cursorline
  syntax on
+ let python_highlight_all=1
  "set background=dark
 "--------------------------------------------------------------------------------
 " 查找/替换相关的设置
@@ -77,7 +78,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'vim-scripts/TaskList.vim'
 Bundle 'majutsushi/tagbar' 
-Bundle 'yegappan/grep'
+Bundle 'dkprice/vim-easygrep'
 Bundle 'thinca/vim-quickrun'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'kien/ctrlp.vim'
@@ -85,6 +86,7 @@ Bundle 'altercation/vim-colors-solarized.git'
 Bundle 'vim-scripts/vim-auto-save'
 " add tmux support
 Bundle 'christoomey/vim-tmux-navigator'
+Bundle 'scrooloose/syntastic'
 
 call vundle#end()
 filetype plugin indent on       " 加了这句才可以用智能补全
@@ -103,8 +105,17 @@ let g:pymode_rope_goto_def_newwin = "vnew"
 let g:pymode_rope_extended_complete = 1                                            
 let g:pymode_breakpoint = 0                                                        
 let g:pymode_syntax = 1                                                            
+let g:pymode_rope_autoimport = 1
 let g:pymode_syntax_builtin_objs = 0                                               
 let g:pymode_syntax_builtin_funcs = 0                                              
+let g:pymode_rope_lookup_project = 0
+" code checking
+let g:pymode_lint_on_write = 1
+let g:pymode_lint = 1
+" refactor setting
+let g:pymode_rope_rename_bind = '<C-c>rr'   "refacor
+let g:pymode_rope_organize_imports_bind = '<C-c>ro' "orgnize imports
+let g:pymode_rope_autoimport_bind = '<C-c>ra'  "import cursor
 map <Leader>b Oimport ipdb; ipdb.set_trace()#BREAKPOINT <C-c>
 
 
@@ -171,7 +182,7 @@ imap <C-s> <Esc>:wa<cr>i<Right>
 nmap <C-s> :wa<cr>
 
 "TaskList map setting
-map <leader>v <Plug>TaskList
+map <leader>t <Plug>TaskList
 
 "--------------------------------------------------------------------------------
 " Grep
@@ -180,6 +191,8 @@ map <leader>v <Plug>TaskList
 nnoremap <silent> <F3> :Rgrep<CR>
 
 
+"access mac system clipboard
+"set clipboard=unamed
 
 "nmap <Leader>g:CommandT<CR>
 "--------------------------------------------------------------------------------
@@ -190,8 +203,10 @@ nnoremap <silent> <F3> :Rgrep<CR>
 "--------------------------------------------------------------------------------
 "NERD_TREE
 "--------------------------------------------------------------------------------"
+"
+let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree"
 
-map <F7> :NERDTreeToggle<CR>
+nmap <F7> :NERDTreeToggle<CR>
 nmap <F8> :TagbarToggle<CR>
 nmap <F4> :set number!<CR>
 
@@ -201,6 +216,15 @@ nmap <F4> :set number!<CR>
 let g:auto_save = 1  " enable AutoSave on Vim startup
 let g:auto_save_no_updatetime = 1  " do not change the 'updatetime' option
 let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
+
+
+
+"--------------------------------------------------------------------------------
+" Ctags
+"--------------------------------------------------------------------------------
+set tags=./tags;
+"let g:easytags_dynamic_files = 0
+nmap <F12> :!ctags -R --fields=+l --languages=python --python-kinds=-iv -f ./tags $(python -c "import os, sys; print(' '.join('{}'.format(d) for d in sys.path if os.path.isdir(d)))")<CR>  
 
 "--------------------------------------------------------------------------------
 " NERD_commenter
@@ -233,7 +257,7 @@ func SetFileTitle()
             call setline(10,"#")  
     endif  
 
-    if expand("%:e") == 'py'                                                                                                                                                                  
+    if expand("%:e") =='py'                                                                                                                                                                  
            call setline(1, "#!/usr/bin/env python")
            call setline(2, "# -*- coding:utf-8 -*- ")
            call setline(3, "#\ @Author: liuxiao")  
