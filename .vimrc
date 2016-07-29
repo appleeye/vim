@@ -87,6 +87,12 @@ Bundle 'vim-scripts/vim-auto-save'
 " add tmux support
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'scrooloose/syntastic'
+Bundle 'craigemery/vim-autotag'
+Bundle 'airblade/vim-rooter'
+
+Bundle 'vim-airline/vim-airline'
+Bundle 'vim-airline/vim-airline-themes'
+
 
 call vundle#end()
 filetype plugin indent on       " 加了这句才可以用智能补全
@@ -185,21 +191,28 @@ nmap <C-s> :wa<cr>
 map <leader>t <Plug>TaskList
 
 "--------------------------------------------------------------------------------
-" Grep
+" EasyGrep
 "--------------------------------------------------------------------------------
 "直接按下<F3>键来查找光标所在的字符串
-nnoremap <silent> <F3> :Rgrep<CR>
+let g:EasyGrepCommand = 1 
+let g:EasyGrepMode = 2       " All:0, Open Buffers:1, TrackExt:2 # 1表示在已打开的buff中搜索, 2表示在当前文件相同扩展名的文件中搜索
+let g:EasyGrepRecursive  = 1 " Recursive searching 递归搜索
+"let g:EasyGrepRoot = 'cwd'   " 设置搜索根路径, cwd:current dir
+let g:EasyGrepIgnoreCase = 1 " Not ignore:0, ignore:1 大小写敏感
+let g:EasyGrepFilesToExclude = "tags"
+let g:EasyGrepRoot = "search:.git" "设置搜索根路径为git/svn repos的根路径
 
 
 "access mac system clipboard
 "set clipboard=unamed
 
-"nmap <Leader>g:CommandT<CR>
 "--------------------------------------------------------------------------------
-" A
+" Dash.vim
 "--------------------------------------------------------------------------------
-"nnoremap <silent> <F12> :A<CR>
+nmap <silent> <leader>d <Plug>DashSearch
+nmap <silent> <leader>g <Plug>DashGlobalSearch 
 
+let g:dash_activate = 1
 "--------------------------------------------------------------------------------
 "NERD_TREE
 "--------------------------------------------------------------------------------"
@@ -213,7 +226,7 @@ nmap <F4> :set number!<CR>
 "--------------------------------------------------------------------------------
 "AUTO_SAVE
 "--------------------------------------------------------------------------------"
-let g:auto_save = 1  " enable AutoSave on Vim startup
+let g:auto_save = 0  " enable AutoSave on Vim startup
 let g:auto_save_no_updatetime = 1  " do not change the 'updatetime' option
 let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
 
@@ -224,7 +237,7 @@ let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
 "--------------------------------------------------------------------------------
 set tags=./tags;
 "let g:easytags_dynamic_files = 0
-nmap <F12> :!ctags -R --fields=+l --languages=python --python-kinds=-iv -f ./tags $(python -c "import os, sys; print(' '.join('{}'.format(d) for d in sys.path if os.path.isdir(d)))")<CR>  
+nmap <F12> :!ctags -R --fields=+l --languages=python --python-kinds=-iv -f /.tags ./<CR>  
 
 "--------------------------------------------------------------------------------
 " NERD_commenter
