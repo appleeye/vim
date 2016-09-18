@@ -92,7 +92,10 @@ Bundle 'airblade/vim-rooter'
 
 Bundle 'vim-airline/vim-airline'
 Bundle 'vim-airline/vim-airline-themes'
-
+" markdown support
+Bundle 'godlygeek/tabular'
+Bundle 'plasticboy/vim-markdown'
+Bundle 'suan/vim-instant-markdown'
 
 call vundle#end()
 filetype plugin indent on       " 加了这句才可以用智能补全
@@ -106,12 +109,13 @@ vmap <C-v> <Plug>(expand_region_shrink)
 
 " python mode setting
 map <Leader>g:call RopeGotoDefinition()<CR>     
+let g:pymode_rope = 0
 let ropevim_enable_shortcuts = 1                                                   
 let g:pymode_rope_goto_def_newwin = "vnew"                                         
-let g:pymode_rope_extended_complete = 1                                            
+let g:pymode_rope_extended_complete = 0                                            
 let g:pymode_breakpoint = 0                                                        
 let g:pymode_syntax = 1                                                            
-let g:pymode_rope_autoimport = 1
+let g:pymode_rope_autoimport = 0
 let g:pymode_syntax_builtin_objs = 0                                               
 let g:pymode_syntax_builtin_funcs = 0                                              
 let g:pymode_rope_lookup_project = 0
@@ -125,9 +129,13 @@ let g:pymode_rope_autoimport_bind = '<C-c>ra'  "import cursor
 map <Leader>b Oimport ipdb; ipdb.set_trace()#BREAKPOINT <C-c>
 
 
+let g:quickrun_no_default_key_mappings = 1
+nmap <Leader>r <Plug>(quickrun)
+map <F10> :QuickRun<CR>
+
 
 "Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<c-e>"
+let g:UltiSnipsExpandTrigger="<leader>e"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
@@ -219,9 +227,11 @@ let g:dash_activate = 1
 "
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree"
 
+nmap <F4> :set number!<CR>
 nmap <F7> :NERDTreeToggle<CR>
 nmap <F8> :TagbarToggle<CR>
-nmap <F4> :set number!<CR>
+nmap <F11>: call SetFileTitle()
+nmap <F12> :!ctags -R --fields=+l --languages=python --python-kinds=-iv<CR>  
 
 "--------------------------------------------------------------------------------
 "AUTO_SAVE
@@ -229,6 +239,8 @@ nmap <F4> :set number!<CR>
 let g:auto_save = 0  " enable AutoSave on Vim startup
 let g:auto_save_no_updatetime = 1  " do not change the 'updatetime' option
 let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
+nmap <leader>w  :w<CR>
+nmap <leader>q  :q<CR>
 
 
 
@@ -237,13 +249,10 @@ let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
 "--------------------------------------------------------------------------------
 set tags=./tags;
 "let g:easytags_dynamic_files = 0
-nmap <F12> :!ctags -R --fields=+l --languages=python --python-kinds=-iv -f /.tags ./<CR>  
 
 "--------------------------------------------------------------------------------
 " NERD_commenter
 "--------------------------------------------------------------------------------
-"let NERD_c_alt_style = 1    " 将C语言的注释符号改为//, 默认是/**/
-"nmap <F5> ,cc
 
 "--------------------------------------------------------------------------------
 "let g:SuperTabRetainCompletionType = 2
