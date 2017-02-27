@@ -1,9 +1,10 @@
  "          Author: liuxiao 
- "           Email: appleeue.zju#gmail.com
+ "           Email: appleeye.zju#gmail.com
  "        Homepage: 
  "         Created: 2015-07-28
  "===============================================================================
  set encoding=utf-8
+ set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
 " set guifont=Luxi/ Mono/ 9   " 设置字体，字体名称和字号
  set tabstop=4       " 设置tab键的宽度
  set backspace=2     " 设置退格键可用
@@ -79,6 +80,7 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'vim-scripts/TaskList.vim'
 Bundle 'majutsushi/tagbar' 
 Bundle 'dkprice/vim-easygrep'
+Bundle 'mileszs/ack.vim'
 Bundle 'thinca/vim-quickrun'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'kien/ctrlp.vim'
@@ -227,10 +229,11 @@ let g:dash_activate = 1
 "
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree"
 
+nmap <F3> :Ack <C-R><C-W>
 nmap <F4> :set number!<CR>
 nmap <F7> :NERDTreeToggle<CR>
 nmap <F8> :TagbarToggle<CR>
-nmap <F11>: call SetFileTitle()
+nmap <F11> :call SetFileTitle()
 nmap <F12> :!ctags -R --fields=+l --languages=python --python-kinds=-iv<CR>  
 
 "--------------------------------------------------------------------------------
