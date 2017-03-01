@@ -1,10 +1,14 @@
-# Path to your oh-my-zsh installation.
-export ZSH=/Users/appleeye/.oh-my-zsh
+# If you come from bash you might have to change your $PATH.
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
+SPARK_HOME=~/develop/sdk/spark-2.1.0-bin-hadoop2.7
+SCALA_HOME=~/develop/sdk/scala-2.11.8
+export PATH=$SCALA_HOME/bin:$SPARK_HOME/bin:$HOME/bin:/usr/local/bin:$PATH
+# Path to your oh-my-zsh installation.
+export ZSH=/Users/xiaoliu/.oh-my-zsh
+
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="pygmalion"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -49,14 +53,13 @@ ZSH_THEME="pygmalion"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git colored-man colorize github jira vagrant virtualenv pip python brew osx zsh-syntax-highlighting)
+plugins=(git)
+
+source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
-
-source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -72,7 +75,7 @@ source $ZSH/oh-my-zsh.sh
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -81,5 +84,21 @@ source $ZSH/oh-my-zsh.sh
 #
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"#
-  alias o="open ."
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias o="open ."
+alias v="vi"
+alias t="tar -zxvf"
+# alias for git
+alias gc="git commit"
+alias go="git checkout"
+alias gs="git status"
+alias ga="git add"
+alias gf="git fetch"
+alias gp="git push"
+alias gd="git diff"
+# alias for docker
+alias dp="docker ps"
+alias di="docker images"
+alias dx="docker exec" 
+alias dr="docker run"
+alias du="docker-compose up"
