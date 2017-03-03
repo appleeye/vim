@@ -4,7 +4,7 @@
  "         Created: 2015-07-28
  "===============================================================================
  set encoding=utf-8
- set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
+ set fileencodings=utf-8,gbk,gb18030,big5,latin1
 " set guifont=Luxi/ Mono/ 9   " 设置字体，字体名称和字号
  set tabstop=4       " 设置tab键的宽度
  set backspace=2     " 设置退格键可用
