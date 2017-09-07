@@ -86,6 +86,7 @@ Bundle 'terryma/vim-multiple-cursors'
 Bundle 'kien/ctrlp.vim'
 Bundle 'altercation/vim-colors-solarized.git'
 Bundle 'vim-scripts/vim-auto-save'
+Bundle 'derekwyatt/vim-scala'
 " add tmux support
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'scrooloose/syntastic'
@@ -98,6 +99,9 @@ Bundle 'vim-airline/vim-airline-themes'
 Bundle 'godlygeek/tabular'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'suan/vim-instant-markdown'
+
+"sytem copy  support
+Bundle 'christoomey/vim-system-copy'
 
 call vundle#end()
 filetype plugin indent on       " 加了这句才可以用智能补全
@@ -265,36 +269,47 @@ set tags=./tags;
 " CVim :help csupport
 "--------------------------------------------------------------------------------
 "let g:C_BraceOnNewLine = "no"   " '{'是否独自一行
-autocmd BufNewFile *.py,*.cc,*.sh,*.java exec ":call SetFileTitle()"  
+autocmd BufNewFile *.py,*.cc,*.sh,*.java,*.sql exec ":call SetFileTitle()"  
 "新建.py,.cc,.java,.sh,  
 "定义函数SetTitle，自动插入文件头  
 func SetFileTitle()  
      if expand("%:e") == 'sh'
             call setline(1, "#!/bin/sh")   
-            call setline(2, "#/ *===============================================================")  
-            call setline(3, "#\ @Author: liuxiao")  
-            call setline(4, "#\ @Created Time : ".strftime("%c"))  
-            call setline(5, "#")   
-            call setline(6, "#\ @File Name: ".expand("%"))  
-            call setline(7, "#\ @Description:")  
-            call setline(8, "#")   
-            call setline(9, "#================================================================*/")  
-            call setline(10,"#")  
+			call SetAuthorSign()
     endif  
 
-    if expand("%:e") =='py'                                                                                                                                                                  
+     if expand("%:e") =='py'
            call setline(1, "#!/usr/bin/env python")
-           call setline(2, "# -*- coding:utf-8 -*- ")
-           call setline(3, "#\ @Author: liuxiao")  
-           call setline(4, "#\ @Created Time : ".strftime("%c"))
-           call setline(5, "#")   
-           call setline(6, "#\ @File Name: ".expand("%"))
-           call setline(7, "#\ @Description:")  
-           call setline(8, "#")   
-           call setline(9, "# ================================================================*/")
-           call setline(10,"#")  
-    endif            
+		   call SetAuthorSign()
 
+     endif            
+     if expand("%:e") =='sql'
+	    call setline(1, "-- SQL statement")
+		call setline(2, "---*- coding:utf-8 -*- ")
+		call setline(3, "-- / *===============================================================")  
+		call setline(4, "-- \ @Author: liuxiao")  
+		call setline(5, "-- \ @Created Time : ".strftime("%c"))  
+		call setline(6, "-- ")   
+		call setline(7, "-- \ @File Name: ".expand("%"))  
+		call setline(8, "-- \ @Description:")  
+		call setline(9, "--")   
+		call setline(10, "-- ================================================================*/")  
+		call setline(11,"--")  
+     endif            
+
+endfunc
+
+func SetAuthorSign()
+    call setline(2, "# -*- coding:utf-8 -*- ")
+	call setline(3, "#/ *===============================================================")  
+	call setline(4, "#\ @Author: liuxiao")  
+	call setline(5, "#\ @Created Time : ".strftime("%c"))  
+	call setline(6, "#")   
+	call setline(7, "#\ @File Name: ".expand("%"))  
+	call setline(8, "#\ @Description:")  
+	call setline(9, "#")   
+	call setline(10, "#================================================================*/")  
+	call setline(11,"#")  
 endfunc
 
 "##################################################################

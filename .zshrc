@@ -2,14 +2,18 @@
 
 SPARK_HOME=~/develop/sdk/spark-2.1.0-bin-hadoop2.7
 SCALA_HOME=~/develop/sdk/scala-2.11.8
-export PATH=$SCALA_HOME/bin:$SPARK_HOME/bin:$HOME/bin:/usr/local/bin:$PATH
+PIO_HOME=~/develop/gitlab/apache-predictionio-0.10.0-incubating/PredictionIO-0.10.0-incubating
+export PATH=$PIO_HOME/bin:$SCALA_HOME/bin:$SPARK_HOME/bin:$HOME/bin:/usr/local/bin:$PATH
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/xiaoliu/.oh-my-zsh
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="pygmalion"
+
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -96,9 +100,10 @@ alias ga="git add"
 alias gf="git fetch"
 alias gp="git push"
 alias gd="git diff"
+alias gb="git branch"
 # alias for docker
 alias dp="docker ps"
 alias di="docker images"
 alias dx="docker exec" 
 alias dr="docker run"
-alias du="docker-compose up"
+alias dcu="docker-compose up"
