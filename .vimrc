@@ -4,7 +4,8 @@
  "         Created: 2015-07-28
  "===============================================================================
  set encoding=utf-8
- set fileencodings=utf-8,gbk,gb18030,big5,latin1
+ set fileencodings=utf-8,gbk,gb18030,big5,latin1,ucs-bom,gb2312,cp936
+ set termencoding=utf-8
 " set guifont=Luxi/ Mono/ 9   " 设置字体，字体名称和字号
  set tabstop=4       " 设置tab键的宽度
  set backspace=2     " 设置退格键可用
@@ -64,6 +65,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'Raimondi/delimitMate'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'rizzatti/dash.vim'
+Bundle 'tell-k/vim-autopep8'
 
 "add snippets
 Bundle 'honza/vim-snippets'
@@ -237,6 +239,7 @@ nmap <F3> :Ack <C-R><C-W>
 nmap <F4> :set number!<CR>
 nmap <F7> :NERDTreeToggle<CR>
 nmap <F8> :TagbarToggle<CR>
+nmap <F9> :Autopep8<CR>
 nmap <F11> :call SetFileTitle()
 nmap <F12> :!ctags -R --fields=+l --languages=python --python-kinds=-iv<CR>  
 
@@ -249,6 +252,12 @@ let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
 nmap <leader>w  :w<CR>
 nmap <leader>q  :q<CR>
 
+
+"--------------------------------------------------------------------------------
+"System  Copy
+"--------------------------------------------------------------------------------"
+"cp--->copy to system clipboard
+"cv---->paster from system  clipboard
 
 
 "--------------------------------------------------------------------------------
@@ -301,14 +310,14 @@ endfunc
 
 func SetAuthorSign()
     call setline(2, "# -*- coding:utf-8 -*- ")
-	call setline(3, "#/ *===============================================================")  
+	call setline(3, "# / *===============================================================")  
 	call setline(4, "#\ @Author: liuxiao")  
 	call setline(5, "#\ @Created Time : ".strftime("%c"))  
 	call setline(6, "#")   
 	call setline(7, "#\ @File Name: ".expand("%"))  
 	call setline(8, "#\ @Description:")  
 	call setline(9, "#")   
-	call setline(10, "#================================================================*/")  
+	call setline(10, "# ================================================================*/")  
 	call setline(11,"#")  
 endfunc
 
