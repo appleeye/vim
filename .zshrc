@@ -2,8 +2,10 @@
 
 SPARK_HOME=~/develop/sdk/spark-2.1.0-bin-hadoop2.7
 SCALA_HOME=~/develop/sdk/scala-2.11.8
-PIO_HOME=~/develop/gitlab/apache-predictionio-0.10.0-incubating/PredictionIO-0.10.0-incubating
-export PATH=$PIO_HOME/bin:$SCALA_HOME/bin:$SPARK_HOME/bin:$HOME/bin:/usr/local/bin:$PATH
+ODPS_HOME=/Users/xiaoliu/develop/odps
+GRADLE_HOME=/Users/xiaoliu/develop/sdk/gradle-4.8
+
+export PATH=$GRADLE_HOME/bin:$ODPS_HOME/bin:$SCALA_HOME/bin:$SPARK_HOME/bin:$HOME/bin:/usr/local/bin:$PATH
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/xiaoliu/.oh-my-zsh
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
@@ -90,7 +92,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias o="open ."
-alias v="vi"
 alias t="tar -zxvf"
 # alias for git
 alias gc="git commit"
@@ -107,3 +108,15 @@ alias di="docker images"
 alias dx="docker exec" 
 alias dr="docker run"
 alias dcu="docker-compose up"
+# alias for gradle
+alias gdr="gradle bootrun"
+alias gdj="gradle compilejava"
+
+[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+
+
+# alias for vim 
+alias vim='/usr/local/bin/vim'
+alias vi="vim"
+alias v="vi"
+

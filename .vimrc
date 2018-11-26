@@ -3,6 +3,7 @@
  "        Homepage: 
  "         Created: 2015-07-28
  "===============================================================================
+ 
  set encoding=utf-8
  set fileencodings=utf-8,gbk,gb18030,big5,latin1,ucs-bom,gb2312,cp936
  set termencoding=utf-8
@@ -19,12 +20,13 @@
  "set listchars = tab:>-,trail:- " 将制表符显示为'>---',将行尾空格显示为'-'
  "set listchars=tab:./ ,trail:.   " 将制表符显示为'.   '
  set autochdir                   " 自动设置目录为正在编辑的文件所在的目录
- set hidden          " 没有保存的缓冲区可以自动被隐藏
+ set hidden          "没有保存的缓冲区可以自动被隐藏
  set scrolloff=5
  set cursorline
  syntax on
  let python_highlight_all=1
  "set background=dark
+
 "--------------------------------------------------------------------------------
 " 查找/替换相关的设置
 "--------------------------------------------------------------------------------
@@ -37,9 +39,8 @@ set gdefault        " 替换时所有的行内匹配都被替换，而不是只�
 
 
 " 修改leader键
-"
-"let mapleader = ','
-"let g:mapleader = ','
+let mapleader = "\<Space>"
+
 "--------------------------------------------------------------------------------
 " 状态栏相关的设置
 "--------------------------------------------------------------------------------
@@ -70,12 +71,15 @@ Bundle 'tell-k/vim-autopep8'
 "add snippets
 Bundle 'honza/vim-snippets'
 Bundle 'SirVer/ultisnips'
+
 "add surround
 Bundle 'tpope/vim-surround'
+
 ". can repeat last command
 Bundle 'tpope/vim-repeat'
 Bundle 'easymotion/vim-easymotion' 
 Bundle 'terryma/vim-expand-region'
+
 " add ide function
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
@@ -89,14 +93,16 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'altercation/vim-colors-solarized.git'
 Bundle 'vim-scripts/vim-auto-save'
 Bundle 'derekwyatt/vim-scala'
+
 " add tmux support
 Bundle 'christoomey/vim-tmux-navigator'
-Bundle 'scrooloose/syntastic'
 Bundle 'craigemery/vim-autotag'
 Bundle 'airblade/vim-rooter'
 
+" vim bar pretty
 Bundle 'vim-airline/vim-airline'
 Bundle 'vim-airline/vim-airline-themes'
+
 " markdown support
 Bundle 'godlygeek/tabular'
 Bundle 'plasticboy/vim-markdown'
@@ -105,11 +111,35 @@ Bundle 'suan/vim-instant-markdown'
 "sytem copy  support
 Bundle 'christoomey/vim-system-copy'
 
+
+"javascript
+Bundle 'pangloss/vim-javascript'
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'marijnh/tern_for_vim'
+Bundle 'posva/vim-vue'
+
+"find and replace  help far.vim
+Bundle 'brooth/far.vim'
+
+"syntax check
+"Bundle 'scrooloose/syntastic'
+
 call vundle#end()
 filetype plugin indent on       " 加了这句才可以用智能补全
 
-let mapleader = "\<Space>"
 
+
+
+" syntax check 
+"
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 "vim-expand-region setting
 vmap v <Plug>(expand_region_expand)
@@ -141,6 +171,8 @@ let g:quickrun_no_default_key_mappings = 1
 nmap <Leader>r <Plug>(quickrun)
 map <F10> :QuickRun<CR>
 
+"javascripts 
+let javascript_enable_domhtmlcss = 1
 
 "Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<leader>e"
@@ -232,7 +264,7 @@ let g:dash_activate = 1
 "--------------------------------------------------------------------------------
 "NERD_TREE
 "--------------------------------------------------------------------------------"
-"
+
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree"
 
 nmap <F3> :Ack <C-R><C-W>
@@ -242,6 +274,7 @@ nmap <F8> :TagbarToggle<CR>
 nmap <F9> :Autopep8<CR>
 nmap <F11> :call SetFileTitle()
 nmap <F12> :!ctags -R --fields=+l --languages=python --python-kinds=-iv<CR>  
+
 
 "--------------------------------------------------------------------------------
 "AUTO_SAVE
@@ -308,6 +341,7 @@ func SetFileTitle()
 
 endfunc
 
+
 func SetAuthorSign()
     call setline(2, "# -*- coding:utf-8 -*- ")
 	call setline(3, "# / *===============================================================")  
@@ -324,8 +358,3 @@ endfunc
 "##################################################################
 "########################## End Of Vimrc ##########################
 "##################################################################
-
-" if filetype is C
-"   T
-"
-"fi
