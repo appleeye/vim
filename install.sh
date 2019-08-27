@@ -9,7 +9,7 @@
 #================================================================*/
 #
 
-ln  ~/.vim/.vimrc  ~/.vimrc
-ln  ~/.vim/.tmux.conf  ~/.tmux.conf
-ln  ~/.vim/.zshrc    ~/.zshrc
+ln -s  ~/.vim/.vimrc  ~/.vimrc
+ln -s  ~/.vim/.tmux.conf  ~/.tmux.conf
+ln -s  ~/.vim/.zshrc    ~/.zshrc
 

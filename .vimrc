@@ -7,7 +7,6 @@
  set encoding=utf-8
  set fileencodings=utf-8,gbk,gb18030,big5,latin1,ucs-bom,gb2312,cp936
  set termencoding=utf-8
-" set guifont=Luxi/ Mono/ 9   " 设置字体，字体名称和字号
  set tabstop=4       " 设置tab键的宽度
  set backspace=2     " 设置退格键可用
  set nu!             " 显示行号
@@ -23,9 +22,13 @@
  set hidden          "没有保存的缓冲区可以自动被隐藏
  set scrolloff=5
  set cursorline
- syntax on
  let python_highlight_all=1
  "set background=dark
+ 
+"--------------------------------------------------------------------------------
+" 各种缩写
+"--------------------------------------------------------------------------------
+ab xtime  r! date "+\%Y-\%m-\%d \%H:\%M:\%S"
 
 "--------------------------------------------------------------------------------
 " 查找/替换相关的设置
@@ -54,7 +57,9 @@ set ruler           " 在编辑过程中，在右下角显示光标位置的状�
 " set completeopt=longest,menu    " 关掉智能补全时的预览窗口"
 "
 set nocompatible
-filetype off
+syntax on
+filetype on
+filetype plugin on
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()
@@ -107,6 +112,7 @@ Bundle 'vim-airline/vim-airline-themes'
 Bundle 'godlygeek/tabular'
 Bundle 'plasticboy/vim-markdown'
 Bundle 'suan/vim-instant-markdown'
+Bundle 'vimwiki/vimwiki'
 
 "sytem copy  support
 Bundle 'christoomey/vim-system-copy'
@@ -122,13 +128,24 @@ Bundle 'posva/vim-vue'
 Bundle 'brooth/far.vim'
 
 "syntax check
-"Bundle 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
+Plugin 'Chiel92/vim-autoformat'
+
+
+" latex support
+Bundle  'lervag/vimtex'
 
 call vundle#end()
-filetype plugin indent on       " 加了这句才可以用智能补全
 
 
-
+"""
+" latex setting
+"""
+let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
 
 " syntax check 
 "
@@ -139,7 +156,21 @@ set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_wq = 1
+let g:syntastic_javascript_checkers = ['eslint']
+
+" auto format
+let javascript_enable_domhtmlcss = 1
+let g:formatdef_eslint = '"SRC=eslint-temp-${RANDOM}.js; cat - >$SRC; eslint --fix $SRC >/dev/null 2>&1; cat $SRC | perl -pe \"chomp if eof\"; rm -f $SRC"'
+let g:formatters_javascript = ['eslint']
+let g:autoformat_verbosemode=1
+let g:formatdef_htmlbeautify='"js-beautify --html"'
+let g:formatters_html = ['htmlbeautify']
+
+let g:formatdef_vueformat='"SRC=vue-temp-${RANDOM}.vue; cat - >$SRC; eslint --fix $SRC >/dev/null 2>&1; cat $SRC | perl -pe \"chomp if eof\"; rm -f $SRC"'
+let g:formatters_vue = ['vueformat']
+
+
 
 "vim-expand-region setting
 vmap v <Plug>(expand_region_expand)
@@ -165,14 +196,15 @@ let g:pymode_rope_rename_bind = '<C-c>rr'   "refacor
 let g:pymode_rope_organize_imports_bind = '<C-c>ro' "orgnize imports
 let g:pymode_rope_autoimport_bind = '<C-c>ra'  "import cursor
 map <Leader>b Oimport ipdb; ipdb.set_trace()#BREAKPOINT <C-c>
+" wiki setting
+let g:vimwiki_list = [{'path': '~/Documents/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
 
 
 let g:quickrun_no_default_key_mappings = 1
 nmap <Leader>r <Plug>(quickrun)
 map <F10> :QuickRun<CR>
 
-"javascripts 
-let javascript_enable_domhtmlcss = 1
 
 "Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<leader>e"
@@ -181,6 +213,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+
 
 "autocmd FileType python set omnifunc=pythoncomplete#Complete
 "let g:pydiction_location='~/.vim/tools/pydiction/complete-dict'  
@@ -269,6 +302,7 @@ let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree"
 
 nmap <F3> :Ack <C-R><C-W>
 nmap <F4> :set number!<CR>
+noremap <F5> :Autoformat<CR>:w<CR>
 nmap <F7> :NERDTreeToggle<CR>
 nmap <F8> :TagbarToggle<CR>
 nmap <F9> :Autopep8<CR>

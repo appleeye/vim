@@ -102,6 +102,7 @@ alias gf="git fetch"
 alias gp="git push"
 alias gd="git diff"
 alias gb="git branch"
+alias gpo="git push origin"
 # alias for docker
 alias dp="docker ps"
 alias di="docker images"
@@ -114,9 +115,16 @@ alias gdj="gradle compilejava"
 
 [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 
-
 # alias for vim 
 alias vim='/usr/local/bin/vim'
 alias vi="vim"
 alias v="vi"
 
+# alias for npm
+alias ni='npm install'
+alias nrd='npm run dev'
+alias nrb='npm  run build'  
+
+
+# alias for pandoc
+alias pdf='pandoc --pdf-engine=xelatex'
