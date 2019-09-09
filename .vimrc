@@ -73,10 +73,6 @@ Bundle 'Valloric/YouCompleteMe'
 Bundle 'rizzatti/dash.vim'
 Bundle 'tell-k/vim-autopep8'
 
-"add snippets
-Bundle 'honza/vim-snippets'
-Bundle 'SirVer/ultisnips'
-
 "add surround
 Bundle 'tpope/vim-surround'
 
@@ -99,7 +95,10 @@ Bundle 'altercation/vim-colors-solarized.git'
 Bundle 'vim-scripts/vim-auto-save'
 Bundle 'derekwyatt/vim-scala'
 
-" add tmux support
+"  add snippets
+Bundle 'SirVer/ultisnips'
+Bundle 'honza/vim-snippets'
+"" add tmux support
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'craigemery/vim-autotag'
 Bundle 'airblade/vim-rooter'
